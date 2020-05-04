@@ -19,7 +19,7 @@ body {
   max-height: 5vh;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   #calc {
     margin-top: 200px !important;
     width: 100%;
