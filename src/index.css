@@ -6,6 +6,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+#calc {
+  margin-top: 8vh !important;
+  height: 80vh;
+  width: 50%;
+  display: inline-flexbox;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+#title {
+  max-height: 5vh;
 }
