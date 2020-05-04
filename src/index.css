@@ -8,8 +8,8 @@ body {
 
 #calc {
   margin-top: 8vh !important;
-  height: 80vh;
-  width: 50%;
+  min-height: 80vh;
+  width: 55%;
   display: inline-flexbox;
   flex-wrap: wrap;
   align-items: flex-start;

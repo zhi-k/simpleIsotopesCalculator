@@ -1,8 +1,9 @@
 import React from "react";
+import DisplayResult from "./DisplayResult";
 
 export default function Calculator() {
   return (
-    <div className="shadow p-3 mb-5 bg-white rounded container mt-5 mx-auto" id="calc">
+    <div className="shadow p-4 mb-5 bg-white rounded container mt-5 mx-auto" id="calc">
       <div className="h6 w-100 mb-3 border-bottom p-2" id="title">
         18F-Fluorodeoxyglucose Decay Calculator
       </div>
@@ -51,6 +52,7 @@ export default function Calculator() {
           </button>
         </div>
       </form>
+      <DisplayResult />
     </div>
   );
 }
