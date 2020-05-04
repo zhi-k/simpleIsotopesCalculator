@@ -18,3 +18,10 @@ body {
 #title {
   max-height: 5vh;
 }
+
+@media (max-width: 768px) {
+  #calc {
+    margin-top: 200px !important;
+    width: 100%;
+  }
+}
