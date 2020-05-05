@@ -7,6 +7,7 @@ export default function DisplayResult() {
         <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col">Molecule</th>
             <th scope="col">Original Activity</th>
             <th scope="col">Elapsed Time</th>
             <th scope="col">Calculated Activity</th>
@@ -16,6 +17,7 @@ export default function DisplayResult() {
           <tr>
             <th scope="row">1</th>
             <td>Mark</td>
+            <td>Otto</td>
             <td>Otto</td>
             <td>@mdo</td>
             <td>
