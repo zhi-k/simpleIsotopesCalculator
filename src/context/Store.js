@@ -1,12 +1,13 @@
 import React, { useReducer, useContext, createContext } from "react";
-import { calculationReducer } from "./Reducers";
+import { calculationReducer, settingsReducer } from "./Reducers";
 
 export const initialState = {
   results: [],
-  settings: {},
+  settings: {
+    molecule: "Fluorine-18",
+    halfLife: 109.77, 
+  },
 };
-
-function settingsReducer() {}
 
 export const rootReducer = ({ results, settings }, action) => ({
   results: calculationReducer(results, action),
