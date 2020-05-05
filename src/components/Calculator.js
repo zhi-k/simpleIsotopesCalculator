@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import DisplayResult from "./DisplayResult";
+import ChooseMolecule from "./ChooseMolecule";
 import { formValidation } from "../helpers/FormValidation";
 import { calculateActivity } from "../helpers/CalculateActivity";
 import { f18 } from "../helpers/Molecules";
@@ -67,10 +68,13 @@ export default function Calculator() {
 
   return (
     <div className="shadow p-4 mb-5 bg-white rounded container mt-5 mx-auto" id="calc">
-      <div className="h6 w-100 mb-3 border-bottom p-2" id="title">
-        18F-Fluorodeoxyglucose Decay Calculator
+      <div className="border-bottom w-100 d-flex justify-content-between">
+        <div className="h6 w-30 mb-3 p-2" id="title">
+          Decay Calculator
+        </div>
+        <ChooseMolecule />
       </div>
-      <form className="form-group w-100" onSubmit={handleForm}>
+      <form className="form-group w-100 pt-1 mb-1" onSubmit={handleForm}>
         <div className="form-row">
           <div className="mb-2 mr-sm-2 col-md-5">
             <label htmlFor="half-life">Half Life</label>
