@@ -16,3 +16,16 @@ export function calculationReducer(state, action) {
       return state;
   }
 }
+
+export function settingsReducer(state, action) {
+  switch (action.type) {
+    case "SET_MOLECULE":
+      return {
+        ...state,
+        molecule: action.payload.molecule,
+        halfLife: action.payload.halfLife,
+      };
+    default:
+      return state;
+  }
+}
