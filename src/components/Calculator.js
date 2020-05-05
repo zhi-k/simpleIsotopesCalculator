@@ -42,7 +42,6 @@ export default function Calculator() {
     }
 
     const output = calculateActivity(input);
-    console.log(output.result);
 
     // Update to context store
     dispatch({
