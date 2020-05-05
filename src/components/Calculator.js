@@ -3,21 +3,22 @@ import DisplayResult from "./DisplayResult";
 import { formValidation } from "../helpers/FormValidation";
 import { calculateActivity } from "../helpers/CalculateActivity";
 import { f18 } from "../helpers/Molecules";
+import { useStateValues } from "../context/Store";
 
 export default function Calculator() {
+  const [state, dispatch] = useStateValues();
+
   const halfLife = f18.halfLife();
   const molecule = f18.name;
 
   const [input, setInput] = useState({
     halfLife,
-    original: "",
+    original: Number(""),
     startDate: "",
     startTime: "",
     endDate: "",
     endTime: "",
   });
-
-  const [calculatedValue, setCalculatedValue] = useState("");
 
   function handleChange(e) {
     e.preventDefault();
@@ -38,7 +39,18 @@ export default function Calculator() {
     }
 
     const output = calculateActivity(input);
-    setCalculatedValue(output);
+    console.log(output.result);
+
+    // Update to context store
+    dispatch({
+      type: "CREATE_ENTRY",
+      payload: {
+        molecule: molecule,
+        originalActivity: input.original,
+        timeElapsed: output.timeElapsed / 60, // calculate in hours for easy display
+        calculatedActivity: output.result.toString(),
+      },
+    });
   }
 
   return (
@@ -117,9 +129,7 @@ export default function Calculator() {
           <button type="submit" className="btn btn-primary mb-2 mt-2">
             Calculate
           </button>
-          <button type="submit" className="btn btn-secondary ml-3">
-            Reset
-          </button>
+          <button className="btn btn-secondary ml-3">Reset</button>
         </div>
       </form>
       <DisplayResult />
