@@ -10,12 +10,12 @@ export default function Heading() {
         <div className="navbar-collapse">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0 ml-3">
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="https://github.com/zhi-k?tab=repositories" target="_blank">
                 Github
               </a>
             </li>
             <li className="nav-item active">
-              <a className="nav-link" href="#">
+              <a className="nav-link" href="https://www.linkedin.com/in/zhi-kang-chong-2ab14b80/" target="_blank">
                 LinkedIn
               </a>
             </li>
