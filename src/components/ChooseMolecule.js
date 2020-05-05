@@ -39,7 +39,7 @@ export default function ChooseMolecule() {
   return (
     <div className="input-group input-group-sm mb-3 w-50" id="molecule">
       <div className="input-group-prepend">
-        <label className="input-group-text" htmlFor="moleculeSelect">
+        <label className="input-group-text bg-dark text-white" htmlFor="moleculeSelect">
           Molecule
         </label>
       </div>

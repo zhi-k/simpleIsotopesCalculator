@@ -29,7 +29,7 @@ export default function Calculator() {
   // Hackish kinda way to update input half life value when user change selection
   useEffect(() => {
     input.halfLife = halfLife;
-  }, [halfLife]);
+  }, [halfLife, input.halfLife]);
 
   function handleForm(e) {
     e.preventDefault();
