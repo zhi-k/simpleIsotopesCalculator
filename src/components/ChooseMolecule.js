@@ -43,10 +43,8 @@ export default function ChooseMolecule() {
           Molecule
         </label>
       </div>
-      <select className="custom-select" id="moleculeSelect" onChange={handleSelect}>
-        <option selected value="f18">
-          Fluorine-18
-        </option>
+      <select className="custom-select" id="moleculeSelect" defaultValue="f18" onChange={handleSelect}>
+        <option value="f18">Fluorine-18</option>
         <option value="ga68">Gallium-68</option>
         <option value="lu177">Lutetium-177</option>
       </select>
