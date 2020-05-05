@@ -26,6 +26,6 @@ export function calculateActivity(input) {
 
   return {
     result: finalActivity,
-    timeElapsed: timeDiffInMinutes,
+    timeElapsed: timeDiffInMinutes / 60, // convert to hours
   };
 }

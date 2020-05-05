@@ -49,7 +49,7 @@ export default function Calculator() {
       payload: {
         molecule: molecule,
         originalActivity: input.original,
-        timeElapsed: output.timeElapsed / 60, // calculate in hours for easy display
+        timeElapsed: output.timeElapsed.toFixed(1), // calculate in hours for easy display
         calculatedActivity: output.result.toString(),
       },
     });
