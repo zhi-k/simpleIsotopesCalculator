@@ -6,7 +6,7 @@ export default function Heading() {
     <div className="container d-flex p-1 align-items-center">
       <nav className="navbar navbar-expand-lg navbar-light bg-light p-2 border-bottom w-100 fixed-top">
         <div className="navbar-brand ml-2" href="#">
-          <strong className="h4 font-weight-bold">FDG Calculator</strong>
+          <strong className="h4 font-weight-bold">Isotopes Calculator</strong>
         </div>
         <div className="navbar-collapse">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0 ml-3">
