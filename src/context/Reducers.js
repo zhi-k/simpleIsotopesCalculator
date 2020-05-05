@@ -29,3 +29,20 @@ export function settingsReducer(state, action) {
       return state;
   }
 }
+
+export function optionsReducer(state, action) {
+  switch (action.type) {
+    case "ADD_OPTION":
+      return [
+        ...state,
+        {
+          optionName: action.payload.optionName,
+          optionHalf: action.payload.optionHalf,
+        },
+      ];
+    case "DELETE_OPTION":
+      return [...state.filter((options) => options !== action.payload)];
+    default:
+      return state;
+  }
+}

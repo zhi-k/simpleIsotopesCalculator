@@ -6,26 +6,11 @@ export default function ChooseMolecule() {
 
   function handleSelect(e) {
     e.preventDefault();
+    const index = e.target.selectedIndex;
+    const selected = e.target.childNodes[index];
 
-    let halfLife = state.settings.halfLife;
-    let molecule = state.settings.molecule;
-
-    switch (e.target.value) {
-      case "f18":
-        halfLife = 109.77;
-        molecule = "Fluorine-18";
-        break;
-      case "ga68":
-        halfLife = 68;
-        molecule = "Gallium-68";
-        break;
-      case "lu177":
-        halfLife = 9571.68; // equivalent to 6.647 days
-        molecule = "Lutetium-177";
-        break;
-      default:
-        throw new Error(`Unable to set half life`);
-    }
+    let halfLife = selected.value || state.settings.halfLife; //if user did not select then default to f18
+    let molecule = selected.label || state.settings.molecule;
 
     dispatch({
       type: "SET_MOLECULE",
@@ -43,10 +28,18 @@ export default function ChooseMolecule() {
           Molecule
         </label>
       </div>
-      <select className="custom-select" id="moleculeSelect" defaultValue="f18" onChange={handleSelect}>
-        <option value="f18">Fluorine-18</option>
-        <option value="ga68">Gallium-68</option>
-        <option value="lu177">Lutetium-177</option>
+      <select className="custom-select" id="moleculeSelect" onChange={handleSelect}>
+        {state.options.map((option, index) =>
+          index === 0 ? (
+            <option selected key={index} value={option.optionHalf}>
+              {option.optionName}
+            </option>
+          ) : (
+            <option key={index} value={option.optionHalf}>
+              {option.optionName}
+            </option>
+          )
+        )}
       </select>
     </div>
   );
