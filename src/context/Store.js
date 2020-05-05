@@ -1,5 +1,5 @@
 import React, { useReducer, useContext, createContext } from "react";
-import { calculationReducer, optionsReducer } from "./Reducers";
+import { calculationReducer, optionsReducer, selectedReducer } from "./Reducers";
 
 export const initialState = {
   results: [],
@@ -17,11 +17,16 @@ export const initialState = {
       optionHalf: 9571.68, // equivalent to 6.647 days
     },
   ],
+  selected: {
+    selectedName: "Fluorine-18",
+    selectedHalf: 109.77,
+  },
 };
 
-export const rootReducer = ({ results, options }, action) => ({
+export const rootReducer = ({ results, options, selected }, action) => ({
   results: calculationReducer(results, action),
   options: optionsReducer(options, action),
+  selected: selectedReducer(selected, action),
 });
 
 export const StoreContext = createContext();

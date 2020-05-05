@@ -7,15 +7,10 @@ import { useStateValues } from "../context/Store";
 
 export default function Calculator() {
   const [state, dispatch] = useStateValues();
-
-  let optionName, optionHalf;
-  if (state.options[0]) {
-    optionName = state.options[0].optionName || "";
-    optionHalf = state.options[0].optionHalf || 0;
-  }
-
+  const { selectedName, selectedHalf } = state.selected;
+  
   const [input, setInput] = useState(() => ({
-    halfLife: optionHalf,
+    halfLife: selectedHalf,
     original: Number(""),
     startDate: "",
     startTime: "",
@@ -33,8 +28,31 @@ export default function Calculator() {
 
   // Hackish kinda way to update input half life value when user change selection
   useEffect(() => {
-    input.halfLife = optionHalf;
-  }, [optionHalf, input.halfLife]);
+    if (input.halfLife !== selectedHalf) {
+      setInput({
+        ...input,
+        halfLife: selectedHalf,
+      });
+    }
+  }, [selectedHalf, input.halfLife]);
+
+  useEffect(() => {
+    if (state.options.length === 0) {
+      setInput({
+        ...input,
+        halfLife: 0,
+      });
+    }
+  }, [state.options]);
+
+  useEffect(() => {
+    if (input.halfLife !== state.selected.selectedHalf) {
+      setInput({
+        ...input,
+        halfLife: state.selected.selectedHalf,
+      });
+    }
+  }, [state.selected.selectedHalf]);
 
   function handleForm(e) {
     e.preventDefault();
@@ -52,7 +70,7 @@ export default function Calculator() {
     dispatch({
       type: "CREATE_ENTRY",
       payload: {
-        isotope: optionName,
+        isotope: selectedName,
         originalActivity: input.original,
         timeElapsed: output.timeElapsed.toFixed(1), // calculate in hours for easy display
         calculatedActivity: output.result.toString(),
@@ -63,7 +81,7 @@ export default function Calculator() {
   function handleReset(e) {
     e.preventDefault();
     setInput({
-      halfLife: optionHalf,
+      halfLife: selectedHalf,
       original: Number(""),
       startDate: "",
       startTime: "",
@@ -86,7 +104,7 @@ export default function Calculator() {
             <label htmlFor="halfLife">Half Life</label>
             <input
               type="text"
-              value={optionHalf || 0}
+              value={input.halfLife}
               name="halfLife"
               className="form-control form-control-sm"
               onChange={handleChange}

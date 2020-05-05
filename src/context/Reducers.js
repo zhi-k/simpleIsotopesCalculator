@@ -33,3 +33,15 @@ export function optionsReducer(state, action) {
       return state;
   }
 }
+
+export function selectedReducer(state, action) {
+  switch (action.type) {
+    case "SELECT_ISOTOPE":
+      return Object.assign({}, state, {
+        selectedName: action.payload.selectedName,
+        selectedHalf: action.payload.selectedHalf,
+      });
+    default:
+      return state;
+  }
+}
