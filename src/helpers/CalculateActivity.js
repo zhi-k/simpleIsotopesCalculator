@@ -19,7 +19,9 @@ export function calculateActivity(input) {
   // exp of whatever has been divided by half life multiply with time diff
   const decayConstant = Math.exp(Ln2dividedHalfLife * timeDiffInMinutes);
 
-  const finalActivity = Math.round(decayConstant * original * 100) / 100;
+  let finalActivity = Math.round(decayConstant * original * 100) / 100;
 
+  // Check if calculated activity is infinity or less than 0
+  if (finalActivity < 0 || isNaN(finalActivity) || !isFinite(finalActivity)) finalActivity = `Impossible to calculate`;
   return finalActivity;
 }
