@@ -76,7 +76,7 @@ function CenteredModal(props) {
 }
 
 export default function OptionsButton() {
-  const [modalShow, setModalShow] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <>

@@ -4,7 +4,7 @@ import { calculationReducer, settingsReducer, optionsReducer } from "./Reducers"
 export const initialState = {
   results: [],
   settings: {
-    molecule: "Fluorine-18",
+    isotope: "Fluorine-18",
     halfLife: 109.77,
   },
   options: [

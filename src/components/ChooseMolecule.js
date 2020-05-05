@@ -10,12 +10,12 @@ export default function ChooseMolecule() {
     const selected = e.target.childNodes[index];
 
     let halfLife = selected.value || state.settings.halfLife; //if user did not select then default to f18
-    let molecule = selected.label || state.settings.molecule;
+    let isotope = selected.label || state.settings.isotope;
 
     dispatch({
       type: "SET_MOLECULE",
       payload: {
-        molecule,
+        isotope,
         halfLife,
       },
     });

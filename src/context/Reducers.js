@@ -4,7 +4,7 @@ export function calculationReducer(state, action) {
       return [
         ...state,
         {
-          molecule: action.payload.molecule,
+          isotope: action.payload.isotope,
           originalActivity: action.payload.originalActivity,
           timeElapsed: action.payload.timeElapsed,
           calculatedActivity: action.payload.calculatedActivity,
@@ -22,7 +22,7 @@ export function settingsReducer(state, action) {
     case "SET_MOLECULE":
       return {
         ...state,
-        molecule: action.payload.molecule,
+        isotope: action.payload.isotope,
         halfLife: action.payload.halfLife,
       };
     default:

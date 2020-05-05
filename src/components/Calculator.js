@@ -7,7 +7,7 @@ import { useStateValues } from "../context/Store";
 
 export default function Calculator() {
   const [state, dispatch] = useStateValues();
-  const { molecule, halfLife } = state.settings;
+  const { isotope, halfLife } = state.settings;
 
   const [input, setInput] = useState(() => ({
     halfLife,
@@ -47,7 +47,7 @@ export default function Calculator() {
     dispatch({
       type: "CREATE_ENTRY",
       payload: {
-        molecule: molecule,
+        isotope: isotope,
         originalActivity: input.original,
         timeElapsed: output.timeElapsed.toFixed(1), // calculate in hours for easy display
         calculatedActivity: output.result.toString(),
