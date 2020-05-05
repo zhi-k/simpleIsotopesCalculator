@@ -3,7 +3,7 @@ import React from "react";
 export default function DisplayResult() {
   return (
     <div className="container d-flex border">
-      <table class="table table-hover table-responsive-md">
+      <table className="table table-hover table-responsive-md">
         <thead>
           <tr>
             <th scope="col">#</th>

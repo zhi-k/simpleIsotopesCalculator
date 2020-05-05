@@ -7,7 +7,7 @@ export default function Heading() {
         <div className="navbar-brand ml-2" href="#">
           <strong className="h4 font-weight-bold">FDG Calculator</strong>
         </div>
-        <div class="navbar-collapse">
+        <div className="navbar-collapse">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0 ml-3">
             <li className="nav-item active">
               <a className="nav-link" href="#">
