@@ -46,10 +46,18 @@ body {
   padding-left: 0.875rem;
 }
 
+#customList {
+  padding: 0.125rem 1.25rem;
+}
+
 @media (max-width: 992px) {
   #calc {
-    margin-top: 200px !important;
+    margin-top: 210px !important;
     width: 100%;
     min-height: 100%;
+  }
+
+  #modalButton {
+    margin-left: 16px !important;
   }
 }
