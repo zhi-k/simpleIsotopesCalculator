@@ -8,7 +8,7 @@ import { useStateValues } from "../context/Store";
 export default function Calculator() {
   const [state, dispatch] = useStateValues();
   const { selectedName, selectedHalf } = state.selected;
-  
+
   const [input, setInput] = useState(() => ({
     halfLife: selectedHalf,
     original: Number(""),
@@ -44,15 +44,6 @@ export default function Calculator() {
       });
     }
   }, [state.options]);
-
-  useEffect(() => {
-    if (input.halfLife !== state.selected.selectedHalf) {
-      setInput({
-        ...input,
-        halfLife: state.selected.selectedHalf,
-      });
-    }
-  }, [state.selected.selectedHalf]);
 
   function handleForm(e) {
     e.preventDefault();
