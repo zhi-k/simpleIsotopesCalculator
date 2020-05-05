@@ -18,18 +18,16 @@ export default function DisplayResult() {
         </thead>
         <tbody>
           {state.results.map((result, index) => (
-            <>
-              <tr key={index}>
-                <th scope="row" key={index}>
-                  {index + 1}
-                </th>
-                {Object.keys(result).map((r) => (
-                  <>
-                    <td key={index}>{result[r]}</td>
-                  </>
-                ))}
+            <tr key={index}>
+              <th scope="row" key={index}>
+                {index + 1}
+              </th>
+              {Object.keys(result).map((r, i) => (
+                <td key={i}>{result[r]}</td>
+              ))}
+              <td>
                 <button
-                  className="btn btn-danger btn-sm mt-2"
+                  className="btn btn-danger btn-sm"
                   onClick={() =>
                     dispatch({
                       type: "DELETE_ENTRY",
@@ -39,8 +37,8 @@ export default function DisplayResult() {
                 >
                   Delete
                 </button>
-              </tr>
-            </>
+              </td>
+            </tr>
           ))}
         </tbody>
       </table>
