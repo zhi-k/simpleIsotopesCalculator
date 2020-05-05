@@ -53,6 +53,18 @@ export default function Calculator() {
     });
   }
 
+  function handleReset(e) {
+    e.preventDefault();
+    setInput({
+      halfLife,
+      original: Number(""),
+      startDate: "",
+      startTime: "",
+      endDate: "",
+      endTime: "",
+    });
+  }
+
   return (
     <div className="shadow p-4 mb-5 bg-white rounded container mt-5 mx-auto" id="calc">
       <div className="h6 w-100 mb-3 border-bottom p-2" id="title">
@@ -129,7 +141,9 @@ export default function Calculator() {
           <button type="submit" className="btn btn-primary mb-2 mt-2">
             Calculate
           </button>
-          <button className="btn btn-secondary ml-3">Reset</button>
+          <button className="btn btn-secondary ml-3" onClick={handleReset}>
+            Reset
+          </button>
         </div>
       </form>
       <DisplayResult />
