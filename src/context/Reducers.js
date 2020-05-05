@@ -11,7 +11,7 @@ export function calculationReducer(state, action) {
         },
       ];
     case "DELETE_ENTRY":
-      return [...state.filter((results) => results.id !== action.payload.id)];
+      return [...state.filter((results) => results !== action.payload)];
     default:
       return state;
   }
