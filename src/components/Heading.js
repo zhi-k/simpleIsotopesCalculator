@@ -13,7 +13,7 @@ export default function Heading() {
             <li className="nav-item active">
               <a
                 className="nav-link"
-                href="https://github.com/zhi-k?tab=repositories"
+                href="https://github.com/zhi-k/simpleIsotopesCalculator"
                 target="_blank"
                 rel="noopener noreferrer"
               >
