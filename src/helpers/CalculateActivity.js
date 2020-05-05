@@ -23,5 +23,9 @@ export function calculateActivity(input) {
 
   // Check if calculated activity is infinity or less than 0
   if (finalActivity < 0 || isNaN(finalActivity) || !isFinite(finalActivity)) finalActivity = `Impossible to calculate`;
-  return finalActivity;
+
+  return {
+    result: finalActivity,
+    timeElapsed: timeDiffInMinutes,
+  };
 }
