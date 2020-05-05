@@ -17,19 +17,6 @@ export function calculationReducer(state, action) {
   }
 }
 
-export function settingsReducer(state, action) {
-  switch (action.type) {
-    case "SET_MOLECULE":
-      return {
-        ...state,
-        isotope: action.payload.isotope,
-        halfLife: action.payload.halfLife,
-      };
-    default:
-      return state;
-  }
-}
-
 export function optionsReducer(state, action) {
   switch (action.type) {
     case "ADD_OPTION":

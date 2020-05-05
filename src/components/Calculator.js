@@ -7,10 +7,15 @@ import { useStateValues } from "../context/Store";
 
 export default function Calculator() {
   const [state, dispatch] = useStateValues();
-  const { isotope, halfLife } = state.settings;
+
+  let optionName, optionHalf;
+  if (state.options[0]) {
+    optionName = state.options[0].optionName || "";
+    optionHalf = state.options[0].optionHalf || 0;
+  }
 
   const [input, setInput] = useState(() => ({
-    halfLife,
+    halfLife: optionHalf,
     original: Number(""),
     startDate: "",
     startTime: "",
@@ -28,8 +33,8 @@ export default function Calculator() {
 
   // Hackish kinda way to update input half life value when user change selection
   useEffect(() => {
-    input.halfLife = halfLife;
-  }, [halfLife, input.halfLife]);
+    input.halfLife = optionHalf;
+  }, [optionHalf, input.halfLife]);
 
   function handleForm(e) {
     e.preventDefault();
@@ -47,7 +52,7 @@ export default function Calculator() {
     dispatch({
       type: "CREATE_ENTRY",
       payload: {
-        isotope: isotope,
+        isotope: optionName,
         originalActivity: input.original,
         timeElapsed: output.timeElapsed.toFixed(1), // calculate in hours for easy display
         calculatedActivity: output.result.toString(),
@@ -58,7 +63,7 @@ export default function Calculator() {
   function handleReset(e) {
     e.preventDefault();
     setInput({
-      halfLife,
+      halfLife: optionHalf,
       original: Number(""),
       startDate: "",
       startTime: "",
@@ -81,7 +86,7 @@ export default function Calculator() {
             <label htmlFor="halfLife">Half Life</label>
             <input
               type="text"
-              value={halfLife}
+              value={optionHalf || 0}
               name="halfLife"
               className="form-control form-control-sm"
               onChange={handleChange}

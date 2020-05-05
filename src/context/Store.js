@@ -1,12 +1,8 @@
 import React, { useReducer, useContext, createContext } from "react";
-import { calculationReducer, settingsReducer, optionsReducer } from "./Reducers";
+import { calculationReducer, optionsReducer } from "./Reducers";
 
 export const initialState = {
   results: [],
-  settings: {
-    isotope: "Fluorine-18",
-    halfLife: 109.77,
-  },
   options: [
     {
       optionName: "Fluorine-18",
@@ -23,9 +19,8 @@ export const initialState = {
   ],
 };
 
-export const rootReducer = ({ results, settings, options }, action) => ({
+export const rootReducer = ({ results, options }, action) => ({
   results: calculationReducer(results, action),
-  settings: settingsReducer(settings, action),
   options: optionsReducer(options, action),
 });
 
