@@ -80,6 +80,7 @@ export default function Calculator() {
               name="halfLife"
               className="form-control form-control-sm"
               onChange={handleChange}
+              readOnly
             />
           </div>
           <div className="mb-2 mr-sm-2 col-md-5">
