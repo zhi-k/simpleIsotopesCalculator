@@ -78,7 +78,7 @@ export default function Calculator() {
       <form className="form-group w-100 pt-1 mb-1" onSubmit={handleForm}>
         <div className="form-row">
           <div className="mb-2 mr-sm-2 col-md-5">
-            <label htmlFor="half-life">Half Life</label>
+            <label htmlFor="halfLife">Half Life</label>
             <input
               type="text"
               value={halfLife}
@@ -101,7 +101,7 @@ export default function Calculator() {
         </div>
         <div className="form-row">
           <div className="mb-2 mr-sm-2 col-md-5">
-            <label htmlFor="start-date">Measured Date</label>
+            <label htmlFor="startDate">Measured Date</label>
             <input
               type="date"
               name="startDate"
@@ -111,7 +111,7 @@ export default function Calculator() {
             />
           </div>
           <div className="mb-2 mr-sm-2 col-md-5">
-            <label htmlFor="start-time">Measured Time</label>
+            <label htmlFor="startTime">Measured Time</label>
             <input
               type="time"
               name="startTime"
@@ -123,7 +123,7 @@ export default function Calculator() {
         </div>
         <div className="form-row">
           <div className="mb-2 mr-sm-2 col-md-5">
-            <label htmlFor="end-date">Calculated Date</label>
+            <label htmlFor="endDate">Calculated Date</label>
             <input
               type="date"
               name="endDate"

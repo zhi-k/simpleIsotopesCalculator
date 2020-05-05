@@ -1,4 +1,5 @@
 import React from "react";
+import OptionsButton from "./OptionsButton";
 
 export default function Heading() {
   return (
@@ -30,6 +31,7 @@ export default function Heading() {
               </a>
             </li>
           </ul>
+          <OptionsButton />
           <div className="my-2 my-lg-0 mr-3 text-muted" id="copyright">
             Made by Zhi Kang
           </div>
