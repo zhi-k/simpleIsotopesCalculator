@@ -1,11 +1,19 @@
+html,
 body {
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+#background {
+  /* background: url("https://source.unsplash.com/1600x900/?plain,simple") no-repeat; */
+  background-size: "cover";
+  background-position: "center";
+  background-color: lightgray;
+  min-height: 100%;
+}
 #calc {
   margin-top: 8vh !important;
   min-height: 80vh;
@@ -23,5 +31,6 @@ body {
   #calc {
     margin-top: 200px !important;
     width: 100%;
+    min-height: 100%;
   }
 }
