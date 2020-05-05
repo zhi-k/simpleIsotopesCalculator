@@ -26,6 +26,11 @@ function CenteredModal(props) {
       return;
     }
 
+    if (isNaN(input.halfLife)) {
+      alert(`Half life must be a number!`);
+      return;
+    }
+
     dispatch({
       type: "ADD_OPTION",
       payload: {
