@@ -17,7 +17,7 @@ body {
 #calc {
   margin-top: 8vh !important;
   min-height: 80vh;
-  width: 55%;
+  width: 62%;
   display: inline-flexbox;
   flex-wrap: wrap;
   align-items: flex-start;
