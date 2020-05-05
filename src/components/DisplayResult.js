@@ -11,9 +11,9 @@ export default function DisplayResult() {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Molecule</th>
-            <th scope="col">Original Activity</th>
-            <th scope="col">Elapsed Time</th>
-            <th scope="col">Calculated Activity</th>
+            <th scope="col">Original Activity (mCi)</th>
+            <th scope="col">Elapsed Time (h)</th>
+            <th scope="col">Calculated Activity (mCi)</th>
           </tr>
         </thead>
         <tbody>
