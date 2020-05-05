@@ -1,25 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import DisplayResult from "./DisplayResult";
 import ChooseMolecule from "./ChooseMolecule";
 import { formValidation } from "../helpers/FormValidation";
 import { calculateActivity } from "../helpers/CalculateActivity";
-import { f18 } from "../helpers/Molecules";
 import { useStateValues } from "../context/Store";
 
 export default function Calculator() {
   const [state, dispatch] = useStateValues();
+  const { molecule, halfLife } = state.settings;
 
-  const halfLife = f18.halfLife();
-  const molecule = f18.name;
-
-  const [input, setInput] = useState({
+  const [input, setInput] = useState(() => ({
     halfLife,
     original: Number(""),
     startDate: "",
     startTime: "",
     endDate: "",
     endTime: "",
-  });
+  }));
 
   function handleChange(e) {
     e.preventDefault();
@@ -28,6 +25,11 @@ export default function Calculator() {
       [e.target.name]: e.target.value,
     });
   }
+
+  // Hackish kinda way to update input half life value when user change selection
+  useEffect(() => {
+    input.halfLife = halfLife;
+  }, [halfLife]);
 
   function handleForm(e) {
     e.preventDefault();
@@ -80,7 +82,7 @@ export default function Calculator() {
             <label htmlFor="half-life">Half Life</label>
             <input
               type="text"
-              value={input.halfLife}
+              value={halfLife}
               name="halfLife"
               className="form-control form-control-sm"
               onChange={handleChange}
