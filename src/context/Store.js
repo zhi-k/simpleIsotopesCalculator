@@ -5,6 +5,12 @@ export const initialState = {
   results: [],
   options: [
     {
+      id: 0,
+      optionName: "Please add new isotope(s)",
+      optionHalf: 0,
+      optionSelected: false,
+    },
+    {
       id: 1,
       optionName: "Fluorine-18",
       optionHalf: 109.77,
