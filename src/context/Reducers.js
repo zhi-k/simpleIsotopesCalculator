@@ -20,19 +20,39 @@ export function calculationReducer(state, action) {
 export function optionsReducer(state, action) {
   switch (action.type) {
     case "ADD_OPTION":
-      // find last id on the array
-      let lastId = state[state.length - 1].id;
-      return [
-        ...state,
-        {
-          id: lastId++,
-          optionName: action.payload.optionName,
-          optionHalf: action.payload.optionHalf,
-          optionSelected: false,
-        },
-      ];
-    case "DELETE_OPTION":
-      return [...state.filter((options) => options !== action.payload)];
+      const { optionName, optionHalf } = action.payload;
+
+      let newObj = {
+        id: state.length === 1 ? 1 : state[state.length - 1].id + 1,
+        optionName,
+        optionHalf,
+        optionSelected: state.length === 1 ? true : false,
+      };
+
+      let newArr = [...state, { ...newObj }];
+
+      if (state.length === 1) {
+        newArr[0].optionSelected = false;
+      }
+      return newArr;
+    case "DELETE_OPTION": {
+      let newArr = state.filter((option) => option.id !== action.payload);
+
+      if (newArr.length === 1) newArr[0].optionSelected = true;
+
+      if (newArr.length === 2) newArr[1].optionSelected = true;
+
+      if (newArr.length > 2) {
+        let index;
+        state.map((option, i) => (option.id === action.payload ? (index = i) : index));
+        if (state[index].optionSelected === true) {
+          newArr[1].optionSelected = true;
+        } else {
+          return newArr;
+        }
+      }
+      return newArr;
+    }
     case "SELECT_OPTION":
       return [
         ...state.map((option) =>
