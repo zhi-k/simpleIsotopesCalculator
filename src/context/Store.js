@@ -1,32 +1,33 @@
 import React, { useReducer, useContext, createContext } from "react";
-import { calculationReducer, optionsReducer, selectedReducer } from "./Reducers";
+import { calculationReducer, optionsReducer } from "./Reducers";
 
 export const initialState = {
   results: [],
   options: [
     {
+      id: 1,
       optionName: "Fluorine-18",
       optionHalf: 109.77,
+      optionSelected: true,
     },
     {
+      id: 2,
       optionName: "Gallium-68",
       optionHalf: 68,
+      optionSelected: false,
     },
     {
+      id: 3,
       optionName: "Lutetium-177",
       optionHalf: 9571.68, // equivalent to 6.647 days
+      optionSelected: false,
     },
   ],
-  selected: {
-    selectedName: "Fluorine-18",
-    selectedHalf: 109.77,
-  },
 };
 
-export const rootReducer = ({ results, options, selected }, action) => ({
+export const rootReducer = ({ results, options }, action) => ({
   results: calculationReducer(results, action),
   options: optionsReducer(options, action),
-  selected: selectedReducer(selected, action),
 });
 
 export const StoreContext = createContext();

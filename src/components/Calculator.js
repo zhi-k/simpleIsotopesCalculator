@@ -7,10 +7,11 @@ import { useStateValues } from "../context/Store";
 
 export default function Calculator() {
   const [state, dispatch] = useStateValues();
-  const { selectedName, selectedHalf } = state.selected;
-
+  // find which item has selected === true and update it to default values
+  const [obj] = state.options.filter((option) => option.optionSelected === true);
+  const { optionName, optionHalf } = obj;
   const [input, setInput] = useState(() => ({
-    halfLife: selectedHalf,
+    halfLife: optionHalf,
     original: Number(""),
     startDate: "",
     startTime: "",
@@ -28,13 +29,13 @@ export default function Calculator() {
 
   // Hackish kinda way to update input half life value when user change selection
   useEffect(() => {
-    if (input.halfLife !== selectedHalf) {
+    if (input.halfLife !== optionHalf) {
       setInput({
         ...input,
-        halfLife: selectedHalf,
+        halfLife: optionHalf,
       });
     }
-  }, [selectedHalf, input.halfLife]);
+  }, [optionHalf]);
 
   useEffect(() => {
     if (state.options.length === 0) {
@@ -61,7 +62,7 @@ export default function Calculator() {
     dispatch({
       type: "CREATE_ENTRY",
       payload: {
-        isotope: selectedName,
+        isotope: optionName,
         originalActivity: input.original,
         timeElapsed: output.timeElapsed.toFixed(1), // calculate in hours for easy display
         calculatedActivity: output.result.toString(),
@@ -72,7 +73,7 @@ export default function Calculator() {
   function handleReset(e) {
     e.preventDefault();
     setInput({
-      halfLife: selectedHalf,
+      halfLife: optionHalf,
       original: Number(""),
       startDate: "",
       startTime: "",

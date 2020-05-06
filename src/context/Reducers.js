@@ -20,27 +20,25 @@ export function calculationReducer(state, action) {
 export function optionsReducer(state, action) {
   switch (action.type) {
     case "ADD_OPTION":
+      // find last id on the array
+      let lastId = state[state.length - 1].id;
       return [
         ...state,
         {
+          id: lastId++,
           optionName: action.payload.optionName,
           optionHalf: action.payload.optionHalf,
+          optionSelected: false,
         },
       ];
     case "DELETE_OPTION":
       return [...state.filter((options) => options !== action.payload)];
-    default:
-      return state;
-  }
-}
-
-export function selectedReducer(state, action) {
-  switch (action.type) {
-    case "SELECT_ISOTOPE":
-      return Object.assign({}, state, {
-        selectedName: action.payload.selectedName,
-        selectedHalf: action.payload.selectedHalf,
-      });
+    case "SELECT_OPTION":
+      return [
+        ...state.map((option) =>
+          option.id === action.payload ? { ...option, optionSelected: true } : { ...option, optionSelected: false }
+        ),
+      ];
     default:
       return state;
   }

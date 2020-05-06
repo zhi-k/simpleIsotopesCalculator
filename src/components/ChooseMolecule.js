@@ -3,53 +3,18 @@ import { useStateValues } from "../context/Store";
 
 export default function ChooseMolecule() {
   const [state, dispatch] = useStateValues();
-  const [count, setCount] = useState(() => state.options.length);
-  const [selecting, setSelecting] = useState({
-    selectingName: "",
-    selectingValue: "",
-  });
 
-  useEffect(() => {
-    if (count !== state.options.length) {
-      if (state.options.length !== 0) {
-        const { optionName, optionHalf } = state.options[0];
-        setSelecting({
-          ...selecting,
-          selectingName: optionName,
-          selectingValue: optionHalf,
-        });
-
-        dispatch({
-          type: "SELECT_ISOTOPE",
-          payload: {
-            selectedName: optionName,
-            selectedValue: optionHalf,
-          },
-        });
-      }
-
-      setCount(state.options.length);
-    }
-  }, [count, state.options.length]);
+  // find which item has selected === true and update it to default values
+  const [obj] = state.options.filter((option) => option.optionSelected === true);
 
   function handleSelect(e) {
     e.preventDefault();
-    const index = e.nativeEvent.target.selectedIndex;
-    const name = e.nativeEvent.target[index].text;
-    const value = e.target.value;
 
-    setSelecting({
-      ...selecting,
-      selectingName: name,
-      selectingValue: value,
-    });
-
+    // e.target.value refs to the id of item in options
     dispatch({
-      type: "SELECT_ISOTOPE",
-      payload: {
-        selectedName: name,
-        selectedHalf: value,
-      },
+      type: "SELECT_OPTION",
+      // e.target.value has to be converted into Number to compare in reducer
+      payload: Number(e.target.value),
     });
   }
 
@@ -60,9 +25,9 @@ export default function ChooseMolecule() {
           Isotopes
         </label>
       </div>
-      <select className="custom-select" id="moleculeSelect" value={selecting.selectingValue} onChange={handleSelect}>
-        {state.options.map((option, index) => (
-          <option key={index} value={option.optionHalf} name={option.optionName}>
+      <select className="custom-select" id="moleculeSelect" defaultValue={obj.id} onChange={handleSelect}>
+        {state.options.map((option) => (
+          <option key={option.id} value={option.id}>
             {option.optionName}
           </option>
         ))}
