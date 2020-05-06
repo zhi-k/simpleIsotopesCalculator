@@ -9,7 +9,6 @@ export default function ChooseMolecule() {
 
   function handleSelect(e) {
     e.preventDefault();
-
     // e.target.value refs to the id of item in options
     dispatch({
       type: "SELECT_OPTION",
@@ -26,11 +25,21 @@ export default function ChooseMolecule() {
         </label>
       </div>
       <select className="custom-select" id="moleculeSelect" defaultValue={obj.id} onChange={handleSelect}>
-        {state.options.map((option) => (
-          <option key={option.id} value={option.id}>
-            {option.optionName}
+        {state.options.length === 1 ? (
+          <option key={0} value={0}>
+            {state.options[0].optionName}
           </option>
-        ))}
+        ) : (
+          state.options.map((option, i) =>
+            i === 0 ? (
+              ""
+            ) : (
+              <option key={option.id} value={option.id}>
+                {option.optionName}
+              </option>
+            )
+          )
+        )}
       </select>
     </div>
   );

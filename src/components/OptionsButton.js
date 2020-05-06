@@ -75,21 +75,25 @@ function CenteredModal(props) {
       </Modal.Body>
       <Modal.Footer id="modalFooter">
         <ul className="list-group w-100 flex-wrap">
-          {state.options.map((option, index) => (
-            <li
-              key={index}
-              className="list-group-item w-100 d-flex justify-content-between align-items-center"
-              id="customList"
-            >
-              {option.optionName}
-              <button
-                className="btn btn-danger btn-small m-2"
-                onClick={() => dispatch({ type: "DELETE_OPTION", payload: option })}
+          {state.options.map((option, index) =>
+            index === 0 ? (
+              ""
+            ) : (
+              <li
+                key={option.id}
+                className="list-group-item w-100 d-flex justify-content-between align-items-center"
+                id="customList"
               >
-                X
-              </button>
-            </li>
-          ))}
+                {option.optionName}
+                <button
+                  className="btn btn-danger btn-small m-2"
+                  onClick={() => dispatch({ type: "DELETE_OPTION", payload: option.id })}
+                >
+                  X
+                </button>
+              </li>
+            )
+          )}
         </ul>
       </Modal.Footer>
     </Modal>
