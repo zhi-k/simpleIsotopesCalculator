@@ -7,9 +7,12 @@ import { useStateValues } from "../context/Store";
 
 export default function Calculator() {
   const [state, dispatch] = useStateValues();
+
   // find which item has selected === true and update it to default values
   const [obj] = state.options.filter((option) => option.optionSelected === true);
+
   const { optionName, optionHalf } = obj;
+
   const [input, setInput] = useState(() => ({
     halfLife: optionHalf,
     original: Number(""),
@@ -48,6 +51,11 @@ export default function Calculator() {
 
   function handleForm(e) {
     e.preventDefault();
+
+    if (state.options.length === 1 && input.halfLife === 0) {
+      alert(`Please add a new isotope!`);
+      return;
+    }
 
     const isValid = formValidation(input);
     if (!isValid.result) {
