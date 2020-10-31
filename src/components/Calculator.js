@@ -38,7 +38,7 @@ export default function Calculator() {
         halfLife: optionHalf,
       });
     }
-  }, [optionHalf]);
+  }, [optionHalf, input]);
 
   useEffect(() => {
     if (state.options.length === 0) {
@@ -47,7 +47,7 @@ export default function Calculator() {
         halfLife: 0,
       });
     }
-  }, [state.options]);
+  }, [state.options, input]);
 
   function handleForm(e) {
     e.preventDefault();
