@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useStateValues } from "../context/Store";
 
 export default function ChooseMolecule() {

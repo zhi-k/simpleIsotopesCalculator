@@ -35,7 +35,7 @@ export default function Heading() {
           <strong className="h4 font-weight-bold">Isotopes Calculator</strong>
         </div>
         <button id="toggle" className="mx-1 btn" style={{ display: "none" }} onClick={toggleNav}>
-          <img src={logo} height="15" width="15" />
+          <img src={logo} alt="logo" height="15" width="15" />
         </button>
         {(navVisible || !smallScreen) && (
           <div className="navbar-collapse">
