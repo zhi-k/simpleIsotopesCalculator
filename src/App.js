@@ -15,6 +15,7 @@ function App() {
   window.dataLayer.push({
     event: "pageview",
     page: {
+      /* eslint-disable no-restricted-globals */
       url: location,
     },
   });
