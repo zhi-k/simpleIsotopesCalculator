@@ -5,6 +5,10 @@ import Heading from "./components/Heading";
 import Calculator from "./components/Calculator";
 import { StoreProvider, initialState, rootReducer } from "./context/Store";
 
+const tag = {
+  gtmId: "GTM-PPQX7JR",
+};
+
 TagManager.initialize(tag);
 
 function App() {
@@ -12,7 +16,6 @@ function App() {
     event: "pageview",
     page: {
       url: location,
-      title: title,
     },
   });
 
