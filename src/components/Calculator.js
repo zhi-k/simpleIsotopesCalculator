@@ -93,9 +93,9 @@ export default function Calculator() {
   return (
     <div className="shadow p-4 mb-5 bg-white rounded container mt-5 mx-auto" id="calc">
       <div className="border-bottom w-100 d-flex justify-content-between">
-        <div className="h6 w-30 mb-3 p-2" id="title">
-          Decay Calculator
-        </div>
+        <h1 className="h6 w-30 mb-3 p-2" id="title">
+          Decay Calculator for Radioisotopes
+        </h1>
         <ChooseMolecule />
       </div>
       <form className="form-group w-100 pt-1 mb-1" onSubmit={handleForm}>
